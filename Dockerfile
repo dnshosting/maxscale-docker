@@ -11,11 +11,6 @@ RUN     rpm --import https://yum.mariadb.org/RPM-GPG-KEY-MariaDB && \
         yum clean all
 ENV MAXSCALE_VERSION 1.2.0
 
-# Moving the maxscale.conf file to a docker-volume
-# RUN     mkdir /usr/local/mariadb-maxscale/ && \
-#         mv /etc/maxscale.cnf /usr/local/mariadb-maxscale/
-# VOLUME  ["/usr/local/mariadb-maxscale/"]
-
 # Exposing the MaxScale default ports
 ## RW Split Listener
 EXPOSE 4006
