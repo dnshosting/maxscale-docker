@@ -1,39 +1,45 @@
 maxscale-docker
 ===============
 
-This project is a Docker container for MaxScale. 
+This project is a Docker container for MariaDB MaxScale.
 
-Base [docker image](http://www.docker.io) to run a [MaxScale](https://mariadb.com/products/mariadb-maxscale) server
+Base [docker image](http://www.docker.io) to run [MaxScale](https://mariadb.com/products/mariadb-maxscale).
 
-    MariaDB MaxScale is an open-source, database-centric proxy that works with MariaDB Enterprise, MariaDB Enterprise Cluster, MariaDB 5.5, MariaDB 10 and Oracle MySQL®. 
+    MariaDB MaxScale is an open-source, database-centric proxy that works with MariaDB Enterprise, MariaDB Enterprise Cluster, MariaDB 5.5, MariaDB 10 and Oracle MySQL®.
     It’s pluggable architecture is designed to increase flexibility and aid customization. Built upon a lightweight, high-speed networking core designed to facilitate throughput.
-    MariaDB MaxScale runs between the client application and the database cluster offering connection and statement-based load balancing. 
+    MariaDB MaxScale runs between the client application and the database cluster offering connection and statement-based load balancing.
     MariaDB MaxScale allows scaling of an organization's database infrastructure while keeping the needs of DBAs, Developers and Data Architects in mind.
 
 ## Getting the container
 
-The container is very small and available on the Docker Index:
+The container can be pulled from the [Docker Hub](https://registry.hub.docker.com/u/dnshosting/maxscale/)
+running
 
-    docker pull asosso/maxscale
+    docker pull dnshosting/maxscale
 
 ## Using the container
 
-Just trying out MaxScale.
+Run a single instance of MaxScale
 
-If you just want to run a single instance of MaxScale server to try out its functionality:
+    docker run -d dnshosting/maxscale
 
-    docker run -d asosso/maxscale
+The default MaxScale configuration file can be replaced by a custom file
+present into the host filesystem using a docker volume.
+In e.g.
+
+    docker run -d -v `pwd`/my-maxscale.cnf:/etc/maxscale.cnf dnshosting/maxscale
 
 ## Build the container
 
-To create the image `asosso/maxscale`, execute the following command on the maxscale-docker folder:
+To create the image `dnshosting/maxscale`, execute the following command into
+the `maxscale-docker` project root directory
 
-    docker build -t asosso/maxscale .
+    docker build -t dnshosting/maxscale .
 
 ## Thanks
 
-* [MaxScale](https://github.com/mariadb-corporation/MaxScale) - for its MySQL Proxy
-* [@MassimilianoPinto](https://github.com/MassimilianoPinto) - for his collaboration with my company
+* [MariaDB MaxScale](https://github.com/mariadb-corporation/MaxScale) - for giving us such an incredible tool
+* [@MassimilianoPinto](https://github.com/MassimilianoPinto) - for his collaboration
 
 ## Contribute
 
@@ -47,5 +53,5 @@ Contributions are welcome.
 
 ## License
 
-Copyright 2015 Andrea Sosso
+Copyright 2015 Colt Engine S.r.l.
 Licensed under the MIT License
